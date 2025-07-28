@@ -3,6 +3,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import ReactWrapper from "./components/ReactWrapper.vue";
 import ReactCounter from "./react-components/ReactCounter.jsx";
+import VueCounter from "./components/VueCounter.vue";
 </script>
 
 <template>
@@ -14,19 +15,25 @@ import ReactCounter from "./react-components/ReactCounter.jsx";
       width="125"
       height="125"
     />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
   </header>
 
   <main>
-    <TheWelcome />
+    <!-- Shared State Demo -->
+    <section class="shared-state-section">
+      <h2>Shared State Between Vue and React</h2>
+      <p class="description">
+        Both components are connected to the same Vue.js store. Changes in one
+        component will update the other in real-time!
+      </p>
 
-    <!-- React Component Integration -->
-    <section class="react-section">
-      <h2>React Component in Vue</h2>
-      <ReactWrapper :component="ReactCounter" />
+      <!-- Vue Counter Component -->
+      <VueCounter />
+
+      <!-- React Counter Component -->
+      <div class="react-section">
+        <h3>React Component</h3>
+        <ReactWrapper :component="ReactCounter" />
+      </div>
     </section>
   </main>
 </template>
@@ -41,13 +48,28 @@ header {
   margin: 0 auto 2rem;
 }
 
-.react-section {
+.shared-state-section {
   margin: 2rem 0;
   padding: 1rem;
   border-top: 2px solid #42b883;
 }
 
-.react-section h2 {
+.shared-state-section h2 {
+  color: #42b883;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.react-section {
+  margin: 1rem 0;
+}
+
+.react-section h3 {
   color: #42b883;
   margin-bottom: 1rem;
 }

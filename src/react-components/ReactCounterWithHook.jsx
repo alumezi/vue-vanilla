@@ -1,31 +1,28 @@
-import React, { useSyncExternalStore } from 'react'
+import React from 'react'
+import { useCounterStore } from '../hooks/useVueStore'
 import { counterStore } from '../stores/counterStore'
 
-function ReactCounter() {
-  // Use useSyncExternalStore to subscribe to the Vue.js store
-  const count = useSyncExternalStore(
-    counterStore.subscribe,
-    counterStore.getSnapshot,
-    () => 0 // Server-side fallback
-  )
+function ReactCounterWithHook() {
+  // Use the custom hook for cleaner code
+  const count = useCounterStore()
 
   return (
     <div style={{ 
       padding: '20px', 
-      border: '2px solid #42b883', 
+      border: '2px solid #17a2b8', 
       borderRadius: '8px', 
       margin: '20px 0',
-      backgroundColor: '#f8f9fa'
+      backgroundColor: '#f0f8ff'
     }}>
-      <h3 style={{ color: '#42b883', margin: '0 0 10px 0' }}>React Counter Component (Vue Store)</h3>
+      <h3 style={{ color: '#17a2b8', margin: '0 0 10px 0' }}>React Counter (Custom Hook)</h3>
       <p>Count: {count}</p>
       <p style={{ fontSize: '0.9em', color: '#666', marginBottom: '15px' }}>
-        This React component is subscribed to the Vue.js store using useSyncExternalStore
+        This component uses a custom useCounterStore hook for cleaner code
       </p>
       <button 
         onClick={() => counterStore.increment()}
         style={{
-          backgroundColor: '#42b883',
+          backgroundColor: '#17a2b8',
           color: 'white',
           border: 'none',
           padding: '8px 16px',
@@ -39,7 +36,7 @@ function ReactCounter() {
       <button 
         onClick={() => counterStore.decrement()}
         style={{
-          backgroundColor: '#ff6b6b',
+          backgroundColor: '#dc3545',
           color: 'white',
           border: 'none',
           padding: '8px 16px',
@@ -67,4 +64,4 @@ function ReactCounter() {
   )
 }
 
-export default ReactCounter 
+export default ReactCounterWithHook 
