@@ -1,5 +1,6 @@
 import React, { useSyncExternalStore } from 'react'
 import { counterStore } from '../stores/counterStore'
+import ReactHeavyChild from './ReactHeavyChild.jsx'
 
 function ReactCounter() {
   // Use useSyncExternalStore to subscribe to the Vue.js store
@@ -63,6 +64,9 @@ function ReactCounter() {
       >
         Reset
       </button>
+      
+      {/* Performance Test Child Component */}
+      <ReactHeavyChild />
     </div>
   )
 }

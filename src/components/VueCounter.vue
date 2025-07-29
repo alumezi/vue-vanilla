@@ -7,12 +7,16 @@
       <button @click="decrement" class="btn btn-decrement">Decrement</button>
       <button @click="reset" class="btn btn-reset">Reset</button>
     </div>
+
+    <!-- Performance Test Child Component -->
+    <VueHeavyChild />
   </div>
 </template>
 
 <script setup>
 import { computed } from "vue";
 import { counterStore } from "../stores/counterStore";
+import VueHeavyChild from "./VueHeavyChild.vue";
 
 // Use computed to reactively get the count from the store
 const count = computed(() => counterStore.getCount());

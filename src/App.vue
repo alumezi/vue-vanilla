@@ -4,6 +4,7 @@ import TheWelcome from "./components/TheWelcome.vue";
 import ReactWrapper from "./components/ReactWrapper.vue";
 import ReactCounter from "./react-components/ReactCounter.jsx";
 import VueCounter from "./components/VueCounter.vue";
+import PerformanceReport from "./components/PerformanceReport.vue";
 </script>
 
 <template>
@@ -18,6 +19,9 @@ import VueCounter from "./components/VueCounter.vue";
   </header>
 
   <main>
+    <!-- Performance Report -->
+    <PerformanceReport />
+
     <!-- Shared State Demo -->
     <section class="shared-state-section">
       <h2>Shared State Between Vue and React</h2>
