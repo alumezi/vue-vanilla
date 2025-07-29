@@ -2,7 +2,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import ReactWrapper from "./components/ReactWrapper.vue";
-import ReactCounter from "./react-components/ReactCounter.jsx";
+import PreactCounter from "./preact-components/PreactCounter.jsx";
 import VueCounter from "./components/VueCounter.vue";
 import PerformanceReport from "./components/PerformanceReport.vue";
 </script>
@@ -24,7 +24,7 @@ import PerformanceReport from "./components/PerformanceReport.vue";
 
     <!-- Shared State Demo -->
     <section class="shared-state-section">
-      <h2>Shared State Between Vue and React</h2>
+      <h2>Shared State Between Vue and Preact</h2>
       <p class="description">
         Both components are connected to the same Vue.js store. Changes in one
         component will update the other in real-time!
@@ -33,10 +33,10 @@ import PerformanceReport from "./components/PerformanceReport.vue";
       <!-- Vue Counter Component -->
       <VueCounter />
 
-      <!-- React Counter Component -->
-      <div class="react-section">
-        <h3>React Component</h3>
-        <ReactWrapper :component="ReactCounter" />
+      <!-- Preact Counter Component -->
+      <div class="preact-section">
+        <h3>Preact Component</h3>
+        <ReactWrapper :component="PreactCounter" />
       </div>
     </section>
   </main>
@@ -69,11 +69,11 @@ header {
   font-style: italic;
 }
 
-.react-section {
+.preact-section {
   margin: 1rem 0;
 }
 
-.react-section h3 {
+.preact-section h3 {
   color: #42b883;
   margin-bottom: 1rem;
 }

@@ -12,11 +12,11 @@
         </div>
       </div>
 
-      <div class="metric-card react-metric">
-        <h4>React Performance</h4>
-        <div class="metric-value">{{ reactMetrics.average }}ms</div>
+      <div class="metric-card preact-metric">
+        <h4>Preact Performance</h4>
+        <div class="metric-value">{{ preactMetrics.average }}ms</div>
         <div class="metric-details">
-          <span>Measurements: {{ reactMetrics.count }}</span>
+          <span>Measurements: {{ preactMetrics.count }}</span>
           <span>Total nodes: 4,000</span>
         </div>
       </div>
@@ -25,7 +25,7 @@
     <div v-if="comparison" class="comparison-result">
       <h4>Performance Winner</h4>
       <div class="winner-badge" :class="comparison.faster">
-        {{ comparison.faster === "vue" ? "Vue.js" : "React" }} is faster by
+        {{ comparison.faster === "vue" ? "Vue.js" : "Preact" }} is faster by
         {{ comparison.difference }}ms
       </div>
     </div>
@@ -57,15 +57,15 @@ import { ref, computed, onMounted } from "vue";
 import { performanceMeasurer } from "../utils/performanceUtils";
 
 const vueMetrics = ref({ average: "0.00", count: 0 });
-const reactMetrics = ref({ average: "0.00", count: 0 });
+const preactMetrics = ref({ average: "0.00", count: 0 });
 
 const comparison = computed(() => {
   const vueAvg = parseFloat(vueMetrics.value.average);
-  const reactAvg = parseFloat(reactMetrics.value.average);
+  const preactAvg = parseFloat(preactMetrics.value.average);
 
-  if (vueAvg > 0 && reactAvg > 0) {
-    const difference = Math.abs(vueAvg - reactAvg).toFixed(2);
-    const faster = vueAvg < reactAvg ? "vue" : "react";
+  if (vueAvg > 0 && preactAvg > 0) {
+    const difference = Math.abs(vueAvg - preactAvg).toFixed(2);
+    const faster = vueAvg < preactAvg ? "vue" : "preact";
     return { faster, difference };
   }
   return null;
@@ -74,7 +74,7 @@ const comparison = computed(() => {
 const refreshMetrics = () => {
   const metrics = performanceMeasurer.getMetrics();
   vueMetrics.value = metrics.vue;
-  reactMetrics.value = metrics.react;
+  preactMetrics.value = metrics.preact;
 };
 
 const clearMetrics = () => {
@@ -127,7 +127,7 @@ onMounted(() => {
   border-left: 4px solid #ff6b6b;
 }
 
-.react-metric {
+.preact-metric {
   border-left: 4px solid #42b883;
 }
 
@@ -146,7 +146,7 @@ onMounted(() => {
   color: #ff6b6b;
 }
 
-.react-metric .metric-value {
+.preact-metric .metric-value {
   color: #42b883;
 }
 
@@ -180,7 +180,7 @@ onMounted(() => {
   background-color: #ff6b6b;
 }
 
-.winner-badge.react {
+.winner-badge.preact {
   background-color: #42b883;
 }
 

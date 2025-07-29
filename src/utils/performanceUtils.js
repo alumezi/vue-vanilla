@@ -1,10 +1,10 @@
-// Performance measurement utilities for comparing Vue vs React rendering
+// Performance measurement utilities for comparing Vue vs Preact rendering
 
 export class PerformanceMeasurer {
   constructor() {
     this.metrics = {
       vue: [],
-      react: []
+      preact: []
     };
   }
 
@@ -50,10 +50,10 @@ export class PerformanceMeasurer {
         average: this.getAverageRenderTime('vue'),
         count: this.metrics.vue.length
       },
-      react: {
-        measurements: this.metrics.react,
-        average: this.getAverageRenderTime('react'),
-        count: this.metrics.react.length
+      preact: {
+        measurements: this.metrics.preact,
+        average: this.getAverageRenderTime('preact'),
+        count: this.metrics.preact.length
       }
     };
   }
@@ -61,7 +61,7 @@ export class PerformanceMeasurer {
   // Clear all metrics
   clear() {
     this.metrics.vue = [];
-    this.metrics.react = [];
+    this.metrics.preact = [];
   }
 
   // Print comparison report
@@ -69,11 +69,11 @@ export class PerformanceMeasurer {
     const metrics = this.getMetrics();
     console.log('=== Performance Comparison Report ===');
     console.log(`Vue.js - Average: ${metrics.vue.average}ms (${metrics.vue.count} measurements)`);
-    console.log(`React - Average: ${metrics.react.average}ms (${metrics.react.count} measurements)`);
+    console.log(`Preact - Average: ${metrics.preact.average}ms (${metrics.preact.count} measurements)`);
     
-    if (metrics.vue.average > 0 && metrics.react.average > 0) {
-      const difference = (metrics.vue.average - metrics.react.average).toFixed(2);
-      const faster = metrics.vue.average < metrics.react.average ? 'Vue.js' : 'React';
+    if (metrics.vue.average > 0 && metrics.preact.average > 0) {
+      const difference = (metrics.vue.average - metrics.preact.average).toFixed(2);
+      const faster = metrics.vue.average < metrics.preact.average ? 'Vue.js' : 'Preact';
       console.log(`${faster} is faster by ${Math.abs(difference)}ms`);
     }
     console.log('=====================================');
@@ -93,7 +93,7 @@ export function usePerformanceMeasure(componentType) {
   return { startMeasure };
 }
 
-// React hook for measuring performance
+// Preact hook for measuring performance
 export function useReactPerformanceMeasure(componentType) {
   const startMeasure = () => {
     const measure = performanceMeasurer.startMeasure(componentType);

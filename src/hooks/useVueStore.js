@@ -1,7 +1,9 @@
-import { useSyncExternalStore } from 'react'
+
+import { useSyncExternalStore } from 'preact/compat';
+
 
 /**
- * Custom hook to subscribe React components to Vue.js stores
+ * Custom hook to subscribe Preact components to Vue.js stores
  * @param {Object} store - Vue store with subscribe and getSnapshot methods
  * @param {Function} getSnapshot - Function to get current state snapshot
  * @param {Function} getServerSnapshot - Function for server-side rendering fallback

@@ -1,11 +1,10 @@
 <template>
-  <div ref="reactContainer"></div>
+  <div ref="preactContainer"></div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { render, h } from "preact";
 
 const props = defineProps({
   component: {
@@ -18,19 +17,17 @@ const props = defineProps({
   },
 });
 
-const reactContainer = ref(null);
-let root = null;
+const preactContainer = ref(null);
 
 onMounted(() => {
-  if (reactContainer.value) {
-    root = ReactDOM.createRoot(reactContainer.value);
-    root.render(React.createElement(props.component, props.props));
+  if (preactContainer.value) {
+    render(h(props.component, props.props), preactContainer.value);
   }
 });
 
 onUnmounted(() => {
-  if (root) {
-    root.unmount();
+  if (preactContainer.value) {
+    render(null, preactContainer.value);
   }
 });
 </script>
