@@ -260,3 +260,10 @@ Visit the application to see both Vue and React components sharing state in real
 
 `feat/test-performance` - uses react
 `feat/test-performance-with-preact` - uses preact
+
+
+React
+<img width="1512" height="864" alt="Screenshot 2025-07-29 at 13 10 37" src="https://github.com/user-attachments/assets/f7ece051-1548-4aa8-a4b4-bfa99653e34d" />
+
+Preact
+<img width="1510" height="858" alt="Screenshot 2025-07-29 at 13 13 48" src="https://github.com/user-attachments/assets/8079b627-865b-454c-9d93-6e19d2fbd003" />
