@@ -255,3 +255,8 @@ npm run dev
 ```
 
 Visit the application to see both Vue and React components sharing state in real-time!
+
+## Performance testing for rendering 4000 nodes
+
+`feat/test-performance` - uses react
+`feat/test-performance-with-preact` - uses preact
