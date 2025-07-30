@@ -17,7 +17,7 @@
         <div class="metric-value">{{ reactMetrics.average }}ms</div>
         <div class="metric-details">
           <span>Measurements: {{ reactMetrics.count }}</span>
-          <span>Total nodes: 4,000</span>
+          <span>Total rows: 100,000 (AG Grid)</span>
         </div>
       </div>
     </div>
@@ -45,9 +45,17 @@
       <ol>
         <li>Refresh the page to see initial render times</li>
         <li>Click the counter buttons to trigger re-renders</li>
+        <li>
+          Interact with the AG Grid (sorting, filtering, pagination) to test
+          React performance
+        </li>
         <li>Use browser dev tools to measure additional metrics</li>
         <li>Compare the results in the console and UI</li>
       </ol>
+      <p style="margin-top: 10px; font-size: 0.9em; color: #666">
+        <strong>Note:</strong> Vue tests with 4,000 DOM nodes, React tests with
+        100,000 rows in AG Grid
+      </p>
     </div>
   </div>
 </template>
